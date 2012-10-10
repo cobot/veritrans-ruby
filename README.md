@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/cobot/veritrans-ruby.png)](http://travis-ci.org/cobot/veritrans-ruby)
+
 # Description
 
 Ruby Wrapper for preparinng data to submit to veritrans server and get token for further process
@@ -15,15 +17,15 @@ Ruby Wrapper for preparinng data to submit to veritrans server and get token for
     client.commodity    = [
       {"COMMODITY_ID"    => "IDxx1",
        "COMMODITY_UNIT"  => "10",
-       "COMMODITY_NUM"   => "1", 
-       "COMMODITY_NAME1" => "Waterbotle", 
+       "COMMODITY_NUM"   => "1",
+       "COMMODITY_NAME1" => "Waterbotle",
        "COMMODITY_NAME2" => "Waterbottle in Indonesian"
       }
     ]
     client.shipping_flag         = "1"
     client.shipping_first_name   = "Sam"
     client.shipping_last_name    = "Anthony"
-    client.shipping_address1     = "Buaran I" 
+    client.shipping_address1     = "Buaran I"
     client.shipping_address2     = "Pulogadung"
     client.shipping_city         = "Jakarta"
     client.shipping_country_code = "IDN"
