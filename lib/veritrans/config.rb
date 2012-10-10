@@ -38,5 +38,9 @@ module Veritrans
         end
       end
     end
+
+    def config
+      @config ||= self.class.config.clone
+    end
   end
 end
