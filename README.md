@@ -1,13 +1,16 @@
 [![Build Status](https://secure.travis-ci.org/cobot/veritrans-ruby.png)](http://travis-ci.org/cobot/veritrans-ruby)
 
-# Description
+## Description
 
 Ruby Wrapper for preparinng data to submit to veritrans server and get token for further process
 
-# Reference
+## Installation
 
+     $ gem install veritrans
 
-# Example Usage
+## Example Usage
+
+Getting the encryption tokens:
 
     require 'veritrans'
     client = Veritrans::Client.new
@@ -17,10 +20,10 @@ Ruby Wrapper for preparinng data to submit to veritrans server and get token for
 
     client.config['server_host'] = '...'
 
-    client.order_id     = "dummy#{(0...12).map{65.+(rand(25))}.join}"
-    client.session_id   = "session#{(0...12).map{65.+(rand(25))}.join}"
+    client.order_id     = SecureRandom.hex
+    client.session_id   = SecureRandom.hex
     client.gross_amount = "10"
-    client.commodity    = [
+    client.commodity    = [ # optional
       {"COMMODITY_ID"    => "IDxx1",
        "COMMODITY_UNIT"  => "10",
        "COMMODITY_NUM"   => "1",
@@ -28,6 +31,8 @@ Ruby Wrapper for preparinng data to submit to veritrans server and get token for
        "COMMODITY_NAME2" => "Waterbottle in Indonesian"
       }
     ]
+
+    # all optional
     client.shipping_flag         = "1"
     client.shipping_first_name   = "Sam"
     client.shipping_last_name    = "Anthony"
@@ -38,16 +43,10 @@ Ruby Wrapper for preparinng data to submit to veritrans server and get token for
     client.shipping_postal_code  = "16954"
     client.shipping_phone        = "0123456789123"
     client..shipping_method      = "N"
-    client.get_keys
 
-# Install
+    client.get_keys # => {"MERCHANT_ENCRYPTION_KEY" => '...', "BROWSER_ENCRYPTION_KEY" => '...'}
 
-     $ gem install veritrans
+Generating a redirect URL for the user's browser:
 
-
-
-
-
-
-
+    client.redirect_url('<browser encryption key>')
 
