@@ -105,10 +105,12 @@ describe Veritrans::Client do
   end
 
   describe "#redirect_url" do
-    it "returns redirect url path" do
-      @client.stub :server_host,"http://192.168.10.250:80" do
-        @client.redirect_url.must_equal("http://192.168.10.250:80/web1/paymentStart.action")
-      end
+    it "returns redirect url path and params" do
+      @client.config['server_host'] = "http://192.168.10.250:80"
+      @client.order_id = '123'
+      @client.merchant_id = '456'
+
+      @client.redirect_url('789').must_equal("http://192.168.10.250:80/web1/deviceCheck.action?ORDER_ID=123&MERCHANT_ID=456&BROWSER_ENCRYPTION_KEY=789")
     end
   end
 
@@ -120,5 +122,4 @@ describe Veritrans::Client do
       @client.instance_eval("@token='#{old_value}'")
     end
   end
-
 end

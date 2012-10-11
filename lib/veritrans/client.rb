@@ -23,6 +23,12 @@ module Veritrans
       end
     end
 
+    # returns the payment redirect url. order_id, merchant_id and
+    # browser_encryption_key must be set.
+    def redirect_url(browse_encryption_key)
+
+    end
+
     #
     # Example:
     #
@@ -77,8 +83,12 @@ module Veritrans
       config["server_host"] || Config::SERVER_HOST
     end
 
-    def redirect_url
-      "#{server_host}/web1/paymentStart.action"
+    def redirect_url(browser_encryption_key)
+      "#{server_host}/web1/deviceCheck.action?#{URI.encode_www_form(
+        'ORDER_ID' => order_id,
+        'MERCHANT_ID' => merchant_id,
+        'BROWSER_ENCRYPTION_KEY' => browser_encryption_key
+        )}"
     end
 
     # :nodoc:
