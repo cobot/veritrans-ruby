@@ -1,22 +1,22 @@
 class VeritransController < ApplicationController
 
-  # post action after user submit checkout-form 
+  # post action after user submit checkout-form
   # Ex POST:
-  # {"gross_amount" => "7000000",
+  # {"amount" => "7000000",
   #  "commodity"=>[
   #    {
-  #    "COMMODITY_ID"    => "Espirit", 
+  #    "COMMODITY_ID"    => "Espirit",
   #    "COMMODITY_UNIT"  => "500000",
   #    "COMMODITY_NUM"   => "4",
   #    "COMMODITY_NAME1" => "Espirit"
   #    },
   #    {
-  #    "COMMODITY_ID"    => "Tablet", 
+  #    "COMMODITY_ID"    => "Tablet",
   #    "COMMODITY_UNIT"  => "2500000",
   #    "COMMODITY_NUM"   => "2",
   #    "COMMODITY_NAME1" => "Tablet"
   #    }]}
-  # Return from get_keys: 
+  # Return from get_keys:
   # TOKEN_MERCHANT = dYWRjRr2ZbJEqMQaqDLIaWeoLl1Tuk3g7g3T1gKGrE5ibYJoZ4
   # TOKEN_BROWSER  = lh4TxpAyB2NhrKTlqGbW1LRPoA6RgyI6roJ2EIII6J29j7gYoP
   def confirm
@@ -24,7 +24,7 @@ class VeritransController < ApplicationController
     client = ::Veritrans::Client.new
     client.order_id     =   "dummy#{(0...12).map{65.+(rand(25))}.join}"
     client.session_id   = "session#{(0...12).map{65.+(rand(25))}.join}"
-    client.gross_amount = params["gross_amount"]
+    client.amount = params["amount"]
     client.commodity    = params["commodity"]
 
     client.customer_specification_flag = "1" #'1':Different Address with shipping
@@ -32,7 +32,7 @@ class VeritransController < ApplicationController
 
     client.first_name    = "Sam"
     client.last_name     = "Anthony"
-    client.address1      = "Buaran I" 
+    client.address1      = "Buaran I"
     client.address2      = "Pulogadung"
     client.city          = "Jakarta"
     client.country_code  = "IDN"
@@ -61,7 +61,7 @@ class VeritransController < ApplicationController
     render :text => "CANCEL_PAY"
   end
 
-  # Server to Server post-notification(action) from Veritrans to Merchants Server 
+  # Server to Server post-notification(action) from Veritrans to Merchants Server
   # Ex: {"mErrMsg"=>"",
   #      "mStatus"=>"success",
   #      "TOKEN_MERCHANT"=>"dYWRjRr2ZbJEqMQaqDLIaWeoLl1Tuk3g7g3T1gKGrE5ibYJoZ4",
@@ -70,12 +70,12 @@ class VeritransController < ApplicationController
   def pay
     # logic to check:
     # 1.validate request
-    # 2.update db if valid 
+    # 2.update db if valid
 
     puts "vvvvvvvvvvvvvv"
     puts params.inspect
 
-    render :text => "OK"  
+    render :text => "OK"
   end
 
   # post-redirection from Veritrans to Merchants Web

@@ -18,7 +18,7 @@ describe Veritrans::Client do
     it "return value from veritrans http_post" do
       @client.order_id      = "81797068"
       @client.session_id    = "89718576"
-      @client.gross_amount  = "10"
+      @client.amount  = "10"
       @client.commodity     = [
         { "COMMODITY_ID"    => "IDxx1",
           "COMMODITY_UNIT"  => "10",
@@ -52,7 +52,7 @@ describe Veritrans::Client do
         @client1 = Veritrans::Client.new do |me|
           me.order_id      = "81797068"
           me.session_id    = "89718576"
-          me.gross_amount  = "10"
+          me.amount  = "10"
           me.commodity     = [
             { "COMMODITY_ID"    => "IDxx1",
               "COMMODITY_UNIT"  => "10",

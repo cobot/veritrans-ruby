@@ -11,23 +11,23 @@ module Veritrans
     # +:unfinish_payment_return_url,+
     # +:error_payment_return_url
     Merchant =[
-      :merchant_id, 
-      :merchant_url, 
+      :merchant_id,
+      :merchant_url,
       :finish_payment_return_url,
       :unfinish_payment_return_url,
       :error_payment_return_url
     ]
 
     # +:settlement_type,+
-    # +:gross_amount,+
+    # +:amount,+
     # +:card_no,+
     # +:card_exp_date,+
     # +:customer_id,+
     # +:previous_customer_flag,+
     # +:customer_status,+
     Payment =[
-      :settlement_type, 
-      :gross_amount,
+      :settlement_type,
+      :amount,
       :card_no,
       :card_exp_date, # mm/yy
       :customer_id,
@@ -99,13 +99,13 @@ module Veritrans
     # +:commodity_unit,+
     # +:commodity_num,+
     # +:commodity_name1,+
-    # +:commodity_name2+ 
+    # +:commodity_name2+
     PurchaseParam =[
       :commodity_id,
       :commodity_unit,
       :commodity_num,
       :commodity_name1,
-      :commodity_name2 
+      :commodity_name2
     ]
 
     # +:order_id,+
@@ -113,19 +113,19 @@ module Veritrans
     # +:merchanthash,+
     # +:card_capture_flag+
     OtherParam =[
-      :order_id, 
-      :session_id, 
+      :order_id,
+      :session_id,
       :merchanthash,
       :card_capture_flag
     ]
 
-    # +:merchant_id,+ 
+    # +:merchant_id,+
     # +:merchanthash,+
     # +:finish_payment_return_url,+
     # +:unfinish_payment_return_url,+
     # +:error_payment_return_url+
     ServerParam =[
-      :merchant_id, 
+      :merchant_id,
       :merchanthash,
       :finish_payment_return_url,
       :unfinish_payment_return_url,

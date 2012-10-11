@@ -11,6 +11,12 @@ Ruby Wrapper for preparinng data to submit to veritrans server and get token for
 
     require 'veritrans'
     client = Veritrans::Client.new
+
+    client.merchant_id = '...'
+    client.merchant_hash_key = '...'
+
+    client.config['server_host'] = '...'
+
     client.order_id     = "dummy#{(0...12).map{65.+(rand(25))}.join}"
     client.session_id   = "session#{(0...12).map{65.+(rand(25))}.join}"
     client.gross_amount = "10"

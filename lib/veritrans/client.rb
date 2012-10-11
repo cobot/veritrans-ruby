@@ -29,7 +29,7 @@ module Veritrans
     #   client = Veritrans::Client.new
     #   client.order_id     = "dummy#{(0...12).map{65.+(rand(25))}.join}"
     #   client.session_id   = "session#{(0...12).map{65.+(rand(25))}.join}"
-    #   client.gross_amount = "10"
+    #   client.amount = "10"
     #   client.commodity    = [{
     #     "COMMODITY_ID"    => "IDxx1",
     #     "COMMODITY_UNIT"  => "10",
@@ -125,7 +125,7 @@ module Veritrans
 
     def merchanthash
       # Generate merchant hash code
-      HashGenerator::generate(merchant_id, merchant_hash_key, settlement_type, order_id, gross_amount);
+      HashGenerator::generate(merchant_id, merchant_hash_key, settlement_type, order_id, amount);
     end
 
     def parse_body(body)

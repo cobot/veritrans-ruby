@@ -16,7 +16,7 @@ describe Veritrans::Client,Faraday::Connection do
 		client = Veritrans::Client.new #.greet('Alice').must_equal('hello, Alice')
 		client.order_id     = "1234"
 		client.session_id   = "3456"
-		client.gross_amount = "10"
+		client.amount = "10"
 		client.commodity    = [
 		  {"COMMODITY_ID" => "IDxx1", "COMMODITY_UNIT" => "10", "COMMODITY_NUM" => "1", "COMMODITY_NAME1" => "Waterbotle", "COMMODITY_NAME2" => "Waterbottle in Indonesian"}
 		]
