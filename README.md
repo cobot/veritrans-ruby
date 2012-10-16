@@ -20,6 +20,10 @@ Getting the encryption tokens:
 
     client.config['server_host'] = '...'
 
+    client.finish_payment_return_url = '...' # url to return to after payment
+    client.finish_payment_access_url = '...' # server to server callback url
+
+
     client.order_id     = SecureRandom.hex
     client.session_id   = SecureRandom.hex
     client.gross_amount = "10"

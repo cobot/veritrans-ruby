@@ -121,6 +121,14 @@ module Veritrans
       config["unfinish_payment_return_url"]
     end
 
+    def finish_payment_access_url
+      config["finish_payment_access_url"]
+    end
+
+    def finish_payment_access_url=(url)
+      config["finish_payment_access_url"] = url
+    end
+
     # :nodoc:
     def token
       @token

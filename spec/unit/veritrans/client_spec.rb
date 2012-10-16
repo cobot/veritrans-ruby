@@ -88,6 +88,19 @@ describe Veritrans::Client do
 
       assert_requested WebMock.stub_request(:post, /ignore\.me/).with(body: /MERCHANT_ID=merchant-123/)
     end
+
+    it 'sends the finish_payment_access_url' do
+      client = Veritrans::Client.new do |me|
+        me.config['server_host'] = 'http://ignore.me'
+        me.finish_payment_access_url = 'http://example.com/callback'
+      end
+
+      client.token
+
+      assert_requested WebMock.stub_request(:post, /ignore\.me/).with {|request|
+        URI.decode_www_form(request.body).include?(['FINISH_PAYMENT_ACCESS_URL', 'http://example.com/callback'])
+      }
+    end
   end
 
   describe "#server_host" do

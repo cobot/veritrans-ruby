@@ -128,6 +128,7 @@ module Veritrans
       :merchant_id,
       :merchanthash,
       :finish_payment_return_url,
+      :finish_payment_access_url,
       :unfinish_payment_return_url,
       :error_payment_return_url
     ]
