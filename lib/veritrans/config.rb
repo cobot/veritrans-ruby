@@ -27,7 +27,7 @@ module Veritrans
     def self.included(mod)
       mod.class_eval do
         @@config_env = ::Object.const_defined?(:Rails) ? Rails.env : "development"
-        @@config = File.exists?("./config/veritrans.yml") ? YAML.load_file("./config/veritrans.yml") : {@@config_env => {}}
+        @@config = File.exist?("./config/veritrans.yml") ? YAML.load_file("./config/veritrans.yml") : {@@config_env => {}}
 
         def self.config_env=(env)
           @@config_env = env
